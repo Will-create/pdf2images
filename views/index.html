@@ -9,49 +9,17 @@
 	</div>
 	<div data-type="main" data-scrollbar="visible:true" style="background-color:#ffff">
 		<div class="grid-1">
-			<ui-component name="button" path="null" config="exec:upload;icon:ti-cloud-upload" class="hidden">Upload</ui-component>
+			<form style="border: 1px solid #404040; border-radius: 8px; padding:8px;" method="POST" enctype="multipart/form-data" action="/extract">
+				<div style="background-color:#F0F0F0;padding:3px 10px; text-align:center;">
+					 <b style="color:black">Upload pdf file</b>
+				</div>
+				<br />
+				<input style="width:100%;padding:8px 12px; text-decoration: none;border:none;border-radius:5px;" type="file" name="File" />
+				<button style="width:100%;padding:8px 12px;background-color:#4585f4;color:#ffff; text-decoration: none;border:none;border-radius:5px;">SUBMIT</button>
+			</form>
 		</div>
 		<br>
 	</div>
 </ui-component>
 
-<script>
-    
-	function download(stream) {
-		
-			var URL = window.URL || window.webkitURL;
-			
-            var downloadUrl = URL.createObjectURL(new Blob([stream], ) );
-			var filename = GUID(25) + '.tar.gz';
-            if (filename) {
-                // use HTML5 a[download] attribute to specify filename
-                var a = document.createElement("a");
-                // safari doesn't support this yet
-                if (typeof a.download === 'undefined') {
-                    window.location.href = downloadUrl;
-                } else {
-                    a.href = downloadUrl;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                }
-            } else
-                window.location.href = downloadUrl;
-            
-		
-	}
-
-
-	function upload() {
-
-		var opt = {};
-		opt.url = '/extract/';
-		opt.callback = function(response) {
-			// console.log(response);
-			download(response);
-		};
-
-
-		SETTER('upload', 'show', opt);
-	}
 </script>
