@@ -9,4 +9,4 @@
 //         console.log(JSON.stringify(res));
 //     });
 // });
-require('total4/debug')({ port: 6000 });
+require('total4/debug')({ port: 8000 });
